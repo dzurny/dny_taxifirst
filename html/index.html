@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taxi Black Screen</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        
+        #blackScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: black;
+            z-index: 9999;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        
+        #blackScreen.show {
+            display: block;
+            opacity: 1;
+        }
+        
+        .taxi-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 24px;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="blackScreen">
+        <div class="taxi-text">Taxík tě převáží...</div>
+    </div>
+
+    <script>
+        window.addEventListener('message', function(event) {
+            if (event.data.type === 'showBlackScreen') {
+                const blackScreen = document.getElementById('blackScreen');
+                
+                if (event.data.show) {
+                    blackScreen.classList.add('show');
+                } else {
+                    blackScreen.classList.remove('show');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
