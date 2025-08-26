@@ -21,6 +21,9 @@ The cooldown duration can be changed in `server/main.lua`:
 local COOLDOWN_HOURS = 1  -- Change this value
 ```
 
+The language can be changed in client.lua
+
 ## Usage
+
 
 Players approach the taxi NPC and interact to use the service. After using the taxi, they must wait 1 hour before they can use it again.
